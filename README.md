@@ -2,7 +2,7 @@
 
 A modern, elegant time-based reminder system with playlist support and automated scheduling. Perfect for schools, factories, offices, or any environment requiring scheduled audio notifications.
 
-![Time Reminder Screenshot](screenshot.png)
+![Time Reminder Screenshot]([screenshot.png](https://github.com/ChandupaJay1/Time-Reminder/blob/c0b231d6c0e25b628c8e42395b17442ae9dcafd7/Screenshot%202025-07-25%20010336.png))
 
 ## ✨ Features
 
