@@ -1,0 +1,98 @@
+import tkinter as tk
+from datetime import datetime, timedelta
+import threading
+import time
+import pygame # type: ignore
+import sys
+
+pygame.init()
+pygame.mixer.init()
+
+reminders = [
+    {"time": "03:00", "name": "1st Period", "sound": "school bell sound effect.mp3"},
+    {"time": "03:01", "name": "2nd Period", "sound": "fschool bell sound effect.mp3"},
+    {"time": "03:02", "name": "Interval",   "sound": "school bell sound effect.mp3"},
+    {"time": "03:03", "name": "3rd Period", "sound": "school bell sound effect"},
+    {"time": "03:04", "name": "4th Period", "sound": "school bell sound effect"},
+    {"time": "03:05", "name": "Lunch Break","sound": "school bell sound effect"},
+    {"time": "03:06", "name": "5th Period", "sound": "school bell sound effect"},
+    {"time": "03:07", "name": "Final Bell", "sound": "school bell sound effect"},
+]
+
+for r in reminders:
+    r["time_obj"] = datetime.strptime(r["time"], "%H:%M").time()
+
+played = set()
+
+def play_sound(file_path):
+    pygame.mixer.music.load(file_path)
+    pygame.mixer.music.play()
+    while pygame.mixer.music.get_busy():
+        time.sleep(1)
+
+def reminder_loop(app, reminder_label):
+    global played
+    reminder_label.config(text="✅ Reminder System Started", fg="#3b9c3f")
+    exit_time = datetime.combine(datetime.today(), reminders[-1]["time_obj"]) + timedelta(minutes=5)
+
+    while datetime.now() < exit_time:
+        now_str = datetime.now().strftime("%H:%M")  # Only hour:minute
+
+        for reminder in reminders:
+            if reminder["time"] == now_str and reminder["time"] not in played:
+                reminder_label.config(text=f"🔔 {reminder['name']} 🔔", fg="#0044cc")
+                play_sound(reminder["sound"])
+                played.add(reminder["time"])
+
+        time.sleep(1)  # Check every second for sharp timing
+
+    app.destroy()
+    sys.exit()
+
+def start_reminders(app, reminder_label):
+    threading.Thread(target=reminder_loop, args=(app, reminder_label), daemon=True).start()
+
+def update_clock(clock_label):
+    now = datetime.now().strftime("%H:%M:%S")
+    clock_label.config(text=now)
+    clock_label.after(1000, update_clock, clock_label)
+
+def main():
+    app = tk.Tk()
+    app.title("⏰ Time Reminder")
+    app.geometry("550x350")
+    app.configure(bg="#1e1e2f")  # Dark bluish background
+    app.resizable(False, False)
+
+    # Main card frame
+    card = tk.Frame(app, bg="#ffffff", bd=0, relief="solid", highlightthickness=2, highlightbackground="#4A90E2")
+    card.place(relx=0.5, rely=0.5, anchor="center", width=480, height=300)
+
+    # Title
+    heading = tk.Label(card, text="📚 Time Reminder", font=("Segoe UI", 22, "bold"),
+                       fg="#222222", bg="#ffffff")
+    heading.pack(pady=(20, 5))
+
+    # Clock
+    clock_label = tk.Label(card, text="", font=("Consolas", 20, "bold"), fg="#4A90E2", bg="#ffffff")
+    clock_label.pack()
+
+    # Reminder label
+    reminder_label = tk.Label(card, text="Click Start to begin", font=("Segoe UI", 14),
+                               fg="#333333", bg="#ffffff")
+    reminder_label.pack(pady=15)
+
+    # Start button
+    start_btn = tk.Button(card, text="▶ Start Reminder", font=("Segoe UI", 13, "bold"),
+                          bg="#4A90E2", fg="white", activebackground="#356ac3",
+                          relief="flat", padx=20, pady=5, cursor="hand2",
+                          command=lambda: start_reminders(app, reminder_label))
+    start_btn.pack(pady=10)
+
+    # Update the clock
+    update_clock(clock_label)
+
+    app.mainloop()
+
+if __name__ == "__main__":
+    main()
