@@ -2,7 +2,7 @@
 
 A modern, elegant time-based reminder system with playlist support and automated scheduling. Perfect for schools, factories, offices, or any environment requiring scheduled audio notifications.
 
-![Time Reminder Screenshot]([screenshot.png](https://github.com/ChandupaJay1/Time-Reminder/blob/c0b231d6c0e25b628c8e42395b17442ae9dcafd7/Screenshot%202025-07-25%20010336.png))
+![Time Reminder Screenshot](https://github.com/ChandupaJay1/Time-Reminder/blob/c0b231d6c0e25b628c8e42395b17442ae9dcafd7/Screenshot%202025-07-25%20010336.png)
 
 ## ✨ Features
 
@@ -41,7 +41,7 @@ pip install pygame tkinter
 ### Installation
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/time-reminder.git
+   git clone https://github.com/ChandupaJay1/time-reminder.git
    cd time-reminder
    ```
 
@@ -224,8 +224,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📧 Support
 
-- **Issues**: [GitHub Issues](https://github.com/yourusername/time-reminder/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yourusername/time-reminder/discussions)
+- **Issues**: [GitHub Issues](https://github.com/ChandupaJay1/time-reminder/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/ChandupaJay1/time-reminder/discussions)
 - **Email**: your.email@example.com
 
 ---
