@@ -200,7 +200,7 @@ class ModernReminder:
         header_frame = tk.Frame(parent, bg="#0f0f23")
         header_frame.pack(fill="x", pady=(0, 20))
         
-        title_label = tk.Label(header_frame, text="Time Reminder", 
+        title_label = tk.Label(header_frame, text="Time Reminder DR Fashion Factory", 
                               font=("Segoe UI", 28, "bold"),
                               fg="#ffffff", bg="#0f0f23")
         title_label.pack()
