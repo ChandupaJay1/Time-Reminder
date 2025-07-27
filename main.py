@@ -154,6 +154,7 @@ def play_playlist(playlist_files, app_instance=None):
 class ModernReminder:
     def __init__(self):
         self.app = tk.Tk()
+        self.app.iconbitmap("app_icon.ico")
         self.is_running = False
         self.setup_window()
         self.create_widgets()

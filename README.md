@@ -38,6 +38,12 @@ A modern, elegant time-based reminder system with playlist support and automated
 pip install pygame tkinter
 ```
 
+### How to make exe with icon
+```bash
+python -m PyInstaller --onefile --noconsole --icon=app_icon.ico --name "DR Fashion Reminder" --add-data "reminders.csv;." --add-data "*.mp3;." main.py
+
+```
+
 ### Installation
 1. **Clone the repository**
    ```bash
